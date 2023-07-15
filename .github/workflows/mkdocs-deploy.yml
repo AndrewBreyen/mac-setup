@@ -3,7 +3,7 @@ name: Deploy mkdocs to GitHub Pages
 on:
   push:
     branches:
-      - 'main'
+      - main
   pull_request:
     branches:
       - '**'
@@ -14,16 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
 
       - name: Build
         uses: Tiryoh/actions-mkdocs@v0
         with:
-          mkdocs_version: "latest" # option
-          #mkdocs_version: '1.1' # option
+          mkdocs-version: "latest" # option
+          #mkdocs-version: '1.1' # option
           requirements: "requirements.txt" # option
           configfile: "mkdocs.yml" # option
-
 
       - name: UploadS3
         uses: noveto-com/s3-upload-sha256-action@main
@@ -31,6 +30,6 @@ jobs:
           args: --acl public-read --follow-symlinks
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ site }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  
+          SOURCE_DIR: 'site'
