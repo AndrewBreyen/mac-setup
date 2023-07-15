@@ -24,14 +24,14 @@ jobs:
           requirements: "requirements.txt" # option
           configfile: "mkdocs.yml" # option
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: ${{ secrets.ROLE_TO_ASSUME_ARN }}
-          aws-region: us-east-1
-      - name: Copy files to the test website with the AWS CLI
-        run: |
-          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }}
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v2
+      #   with:
+      #     role-to-assume: ${{ secrets.ROLE_TO_ASSUME_ARN }}
+      #     aws-region: us-east-1
+      # - name: Copy files to the test website with the AWS CLI
+      #   run: |
+      #     aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET }}
 
       # - name: UploadS3
       #   uses: noveto-com/s3-upload-sha256-action@main
@@ -42,3 +42,15 @@ jobs:
       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #     SOURCE_DIR: 'public'
+
+      - name: Release Binary to S3
+        uses: mostlytyped/s3-put-action@v1.0.0
+        with:
+          args: --acl-public
+        env:
+          LOCAL_FILE: site/*
+          REMOTE_FILE: site/*
+          AWS_ENDPOINT: ${{ secrets.AWS_ENDPOINT }}
+          AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
