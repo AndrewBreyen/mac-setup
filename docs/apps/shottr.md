@@ -1,8 +1,7 @@
-# Additional
+# Shottr
 
-## Disable Dark Mode for VirtualBox
 
-1. Open terminal
+1. Download
 2. run:
 
 ````
