@@ -9,8 +9,8 @@ on:
       - '**'
 
 jobs:
-  build:
-    name: Deploy docs to GitHub Pages
+  buildupload:
+    name: Build mkdocs site upload to S3
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,33 +24,32 @@ jobs:
           requirements: "requirements.txt" # option
           configfile: "mkdocs.yml" # option
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
 
-      - name: Post to a Slack channel
-        if: ${{ github.ref == 'refs/heads/main' }}
-        id: slack
-        uses: slackapi/slack-github-action@v1.23.0
+      - name: UploadS3
+        uses: zdurham/s3-upload-github-action@master
         with:
-          # Slack channel ID where message will be posted. Needed if using bot token
-          channel-id: "C04JZM55VC2"
-          # Message to post into Slack. Needed if using bot token
-          payload: |
-            {
-              "text": "mac-setup Documentation build result: ${{ job.status }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "mac-setup Documentation build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
-            }
-    env:
-      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          args: --acl public-read
+        env:
+          FILE: ./lambda.zip
+          AWS_REGION: 'us-east-1'
+          S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          S3_KEY: ${{ secrets.S3_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  # deploy:
+  #   runs-on: ubuntu-latest
+    
+  #   steps:
+  #   - uses: actions/checkout@master
+   
+  #   - name: Upload file to bucket
+  #     uses: zdurham/s3-upload-github-action@master
+  #     with:
+  #       args: --acl public-read
+  #     env:
+  #      FILE: ./lambda.zip
+  #      AWS_REGION: 'us-east-1'
+  #      S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+  #      S3_KEY: ${{ secrets.S3_KEY }}
+  #      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
