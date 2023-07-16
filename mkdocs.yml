@@ -3,12 +3,13 @@ nav:
     - Home: index.md
     - Apps:
       - 'Shottr': 'apps/shottr.md'
+      - 'VMWare Fusion': 'apps/vmware-fusion.md'
     - Command Line:
       - 'Command Line': 'setup/commandline.md'
 theme:
   name: material
-  logo: img/macmini-icon.png
-  favicon: img/macmini-icon.png
+  logo: img/laptop.png
+  favicon: img/laptop.png
   features:
     - navigation.tabs
     - navigation.tabs.sticky
