@@ -1,4 +1,4 @@
-name: MKDocsBuildDeploy
+name: build-deploy
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - "main"
 
 jobs:
-  build:
-    name: MKDocsBuildDeploy
+  builddeploy:
+    name: build-deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,11 +33,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
 
-  post-to-slack:
-    name: Post to Slack channel
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Post to a Slack channel
         uses: slackapi/slack-github-action@v1.23.0
         with:
