@@ -1,11 +1,18 @@
 name: MkDocs Audit
+# on:
+#   push:
+#     branches:
+#       - main  # Change this to match your default branch if different
+#   pull_request:
+#     branches:
+#       - main  # Change this to match your default branch if different
 on:
   push:
     branches:
-      - main  # Change this to match your default branch if different
+      - 'main'
   pull_request:
     branches:
-      - main  # Change this to match your default branch if different
+      - '**'
 
 jobs:
   audit:
