@@ -13,11 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: prettifier
-        uses: creyD/prettier_action@v4.3
+      - name: prettier
+        uses: actionsx/prettier@v2
         with:
-          dry: true
-          prettier_options: "'**/*.md'"
+        # prettier CLI arguments.
+          args: --check "**/*.md"
 
       - name: markdownling
         uses: DavidAnson/markdownlint-cli2-action@v11
