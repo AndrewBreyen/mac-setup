@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - '**'
+    types:
+      - closed
 
 jobs:
   build:
@@ -16,19 +18,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build
-        uses: Tiryoh/actions-mkdocs@v0
-        with:
-          mkdocs_version: "latest"
-          requirements: "requirements.txt"
-          configfile: "mkdocs.yml"
-
       - name: Install markdownlint-cli
         run: npm install -g markdownlint-cli
 
       - name: Linting
         run: |
           markdownlint . --config .mdlrc .
+
+      - name: Build
+        uses: Tiryoh/actions-mkdocs@v0
+        with:
+          mkdocs_version: "latest"
+          requirements: "requirements.txt"
+          configfile: "mkdocs.yml"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
