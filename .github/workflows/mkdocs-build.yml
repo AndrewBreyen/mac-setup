@@ -1,0 +1,42 @@
+name: MkDocs Audit
+on:
+  push:
+    branches:
+      - main  # Change this to match your default branch if different
+  pull_request:
+    branches:
+      - main  # Change this to match your default branch if different
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  # Change this to match your Python version if necessary
+
+      - name: Install MkDocs and plugins
+        run: |
+          pip install mkdocs mkdocs-material  # Add any additional plugins you use
+
+      - name: Build MkDocs site
+        run: mkdocs build
+
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Change this to match your Node.js version if necessary
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Audit Markdown files
+        run: markdownlint .
+
+      # Add any other steps you need for auditing here, such as custom scripts or additional tools.
+
