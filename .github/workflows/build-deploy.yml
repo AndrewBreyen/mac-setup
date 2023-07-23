@@ -13,12 +13,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install markdownlint-cli
-        run: npm install -g markdownlint-cli
+      - name: prettier
+        uses: actionsx/prettier@v2
+        with:
+          # prettier CLI arguments.
+          args: --check "**/*.md"
 
-      - name: Linting
-        run: |
-          markdownlint . --config .mdlrc .
+      - name: markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v11
+        with:
+          globs: "**/*.md"
 
       - name: Build
         uses: Tiryoh/actions-mkdocs@v0
