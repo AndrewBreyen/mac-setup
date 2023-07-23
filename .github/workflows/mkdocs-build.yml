@@ -1,20 +1,17 @@
-name: MkDocs Audit
+name: MkDocs Build
 on:
   push:
     branches:
-      - main  # Change this to match your default branch if different
+      - main
   pull_request:
     branches:
-      - main  # Change this to match your default branch if different
+      - main
 
 jobs:
-  audit:
+  build-mkdocs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -35,8 +32,26 @@ jobs:
       - name: Install markdownlint-cli
         run: npm install -g markdownlint-cli
 
-      - name: Audit Markdown files
-        run: markdownlint .
 
-      # Add any other steps you need for auditing here, such as custom scripts or additional tools.
 
+
+
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+
+
+
+
+
+     - name: Linting
+        run: |
+          npm install -g markdownlint-cli --no-fund --no-audit
+          markdownlint . --config .mdlrc .
+
+
+    
+
+      - name: Build MkDocs site
+        run: mkdocs build
