@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "main"
+      - '**/**'
 
 jobs:
   lint:
@@ -19,7 +20,7 @@ jobs:
         # prettier CLI arguments.
           args: --check "**/*.md"
 
-      - name: markdownling
+      - name: markdownlint
         uses: DavidAnson/markdownlint-cli2-action@v11
         with:
           globs: '**/*.md'
