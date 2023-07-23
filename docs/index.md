@@ -6,5 +6,6 @@ This wiki contains documentation on Mac Setup.
 At a command line, run:
 
 ```
-./setup-gpt.sh
+./setup.sh
 ```
+

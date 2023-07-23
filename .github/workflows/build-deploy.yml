@@ -1,4 +1,4 @@
-name: Deploy mkdocs to GitHub Pages
+name: MKDocsBuildDeploy
 
 on:
   push:
@@ -7,14 +7,23 @@ on:
   pull_request:
     branches:
       - '**'
+    types:
+      - closed
 
 jobs:
   build:
-    name: Deploy docs to GitHub Pages
+    name: MKDocsBuildDeploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Linting
+        run: |
+          markdownlint . --config .mdlrc .
 
       - name: Build
         uses: Tiryoh/actions-mkdocs@v0

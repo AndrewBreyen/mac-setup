@@ -1,0 +1,28 @@
+name: MKDocsBuild
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: MKDocsBuild
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Linting
+        run: |
+          markdownlint . --config .mdlrc .
+
+      - name: Build
+        uses: Tiryoh/actions-mkdocs@v0
+        with:
+          mkdocs_version: "latest"
+          requirements: "requirements.txt"
+          configfile: "mkdocs.yml"

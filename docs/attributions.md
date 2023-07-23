@@ -5,7 +5,7 @@ hide:
 
 # Attributions
 
-Portions of this documentation may come from application documentation. 
+Portions of this documentation may come from application documentation.
 
 ## Jellyfin
 

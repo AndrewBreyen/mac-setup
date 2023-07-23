@@ -55,22 +55,10 @@ install_python_dependencies() {
 }
 
 
-# Function to check if Homebrew is installed
-install_vercel() {
-    if ! command -v brew &>/dev/null; then
-        return 1
-    else
-        return 0
-    fi
-}
-
-
-
 # Main script execution
 install_brew
 install_gh
 install_pyenv
 install_python_dependencies
-# install vercel
 
 echo "Provisioning completed successfully."
