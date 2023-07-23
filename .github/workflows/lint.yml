@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - "main"
-      - '**/**'
+      - "**/**"
 
 jobs:
   lint:
@@ -17,14 +17,13 @@ jobs:
       - name: prettier
         uses: actionsx/prettier@v2
         with:
-        # prettier CLI arguments.
+          # prettier CLI arguments.
           args: --check "**/*.md"
 
       - name: markdownlint
         uses: DavidAnson/markdownlint-cli2-action@v11
         with:
-          globs: '**/*.md'
-  
+          globs: "**/*.md"
 
       # Check if any changes were made after prettier formatting
       - name: Check for Changes
