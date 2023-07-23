@@ -22,12 +22,3 @@ jobs:
       - name: Linting
         run: |
           markdownlint . --config .mdlrc .
-          # Store the linting results as an artifact
-          mkdir -p lint-results
-          markdownlint . --config .mdlrc . > lint-results/linting-report.txt
-
-      - name: Upload Linting Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: lint-results
-          path: lint-results/linting-report.txt

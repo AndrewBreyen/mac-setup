@@ -23,22 +23,12 @@ jobs:
           requirements: "requirements.txt"
           configfile: "mkdocs.yml"
 
-      # Download the lint-results artifact from the lint job
-      - name: Download Linting Results
-        uses: actions/download-artifact@v2
-        with:
-          name: lint-results
-          path: lint-results
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
 
-      # Check if the linting report contains any errors
-      - name: Check Linting Results
+      - name: Linting
         run: |
-          if grep -q "error" lint-results/linting-report.txt; then
-            echo "Linting failed. Please fix the errors before deploying."
-            exit 1
-          else
-            echo "Linting successful. Proceeding with the deployment."
-          fi
+          markdownlint . --config .mdlrc .
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
