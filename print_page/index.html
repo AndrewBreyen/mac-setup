@@ -208,6 +208,22 @@
   
 
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/repo-troubleshooting.md" class="md-tabs__link">
+        zRepo Troubleshooting
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -382,6 +398,58 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          zRepo Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="zRepo Troubleshooting" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          zRepo Troubleshooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/repo-troubleshooting.md" class="md-nav__link">
+        Repo Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -439,8 +507,12 @@
                 </nav>
             </div>
         </section>
-        <section class="print-page" id="index"><h1 id="index-welcome-to-macserver-documentation">Welcome to MacServer Documentation</h1>
-<p>This wiki contains documentation on how MacServer is set up and used.</p></section>
+        <section class="print-page" id="index"><h1 id="index-welcome-to-macsetup">Welcome to MacSetup</h1>
+<p>This wiki contains documentation on Mac Setup.</p>
+<h2 id="index-quick-setup">Quick Setup</h2>
+<p>At a command line, run:</p>
+<div class="highlight"><pre><span></span><code>./setup.sh
+</code></pre></div></section>
                         <h1 class='nav-section-title' id='section-apps'>
                             Apps <a class='headerlink' href='#section-apps' title='Permanent link'>↵</a>
                         </h1>
@@ -459,14 +531,19 @@
                             Command Line <a class='headerlink' href='#section-command-line' title='Permanent link'>↵</a>
                         </h1>
                         <section class="print-page" id="setup-commandline"><h1 id="setup-commandline-command-line">Command Line</h1>
-<h2 id="setup-commandline-install-brew">Install brew</h2>
+<h2 id="setup-commandline-auto-install">Auto install</h2>
+<p>Run in a terminal:</p>
+<div class="highlight"><pre><span></span><code>mac-setup/setup-gpt.sh
+</code></pre></div>
+<h2 id="setup-commandline-manual-install">Manual Install</h2>
+<h3 id="setup-commandline-install-brew">Install brew</h3>
 <ol>
 <li>Open terminal</li>
 <li>run:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
-<h2 id="setup-commandline-install-pyenv">Install Pyenv</h2>
+<h3 id="setup-commandline-install-pyenv">Install Pyenv</h3>
 <ol>
 <li>Open terminal</li>
 <li>run:</li>
@@ -476,13 +553,17 @@ brew<span class="w"> </span>install<span class="w"> </span>pyenv
 pyenv<span class="w"> </span>init
 <span class="nb">exec</span><span class="w"> </span><span class="nv">$SHELL</span>
 </code></pre></div>
-<h2 id="setup-commandline-install-python">Install Python</h2>
+<h3 id="setup-commandline-install-python">Install Python</h3>
 <ol>
 <li>Open terminal</li>
 <li>run:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>openssl<span class="w"> </span>readline<span class="w"> </span>sqlite3<span class="w"> </span>xz<span class="w"> </span>zlib<span class="w"> </span>tcl-tk
-</code></pre></div></section><h1 class='nav-section-title-end'>Ended: Command Line</h1></div>
+</code></pre></div></section><h1 class='nav-section-title-end'>Ended: Command Line</h1>
+                        <h1 class='nav-section-title' id='section-zrepo-troubleshooting'>
+                            zRepo Troubleshooting <a class='headerlink' href='#section-zrepo-troubleshooting' title='Permanent link'>↵</a>
+                        </h1>
+                        <h1 class='nav-section-title-end'>Ended: zRepo Troubleshooting</h1></div>
 
 
 
