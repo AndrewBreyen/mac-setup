@@ -9,10 +9,16 @@ on:
       - '**'
 
 jobs:
+  init:  # Add a dummy job without any dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: init
+        run: echo "init"
+
   build:
     name: MKDocsBuildDeploy
     runs-on: ubuntu-latest
-    needs: lint  # Make sure to run the 'lint' job first before running this job
+    needs: init, lint
     steps:
       - name: Checkout
         uses: actions/checkout@v2
