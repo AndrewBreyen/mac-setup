@@ -1,6 +1,15 @@
 # Command Line
 
-## Install brew
+## Auto install
+
+Run in a terminal:
+```
+mac-setup/setup-gpt.sh
+```
+
+## Manual Install
+
+### Install brew
 
 1. Open terminal
 2. run:
@@ -9,7 +18,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ````
 
-## Install Pyenv
+### Install Pyenv
 
 1. Open terminal
 2. run:
@@ -22,7 +31,7 @@ exec $SHELL
 ````
 
 
-## Install Python
+### Install Python
 1. Open terminal
 2. run:
 
