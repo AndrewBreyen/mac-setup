@@ -17,19 +17,14 @@ jobs:
       - name: Install prettier
         run: npm install -g prettier
 
-      # Install prettier
-      - name: Install markdownlint
-        run: npm install markdownlint
-
-
-      # Lint with prettier and markdownlint
-      - name: Lint and Format
+      # Lint with prettier and markdownlintm
+      - name: Run Prettier
         run: |
           echo "### Prettier:"
           prettier --list-different "docs/*.md" --log-level=warn
 
-          echo "### Markdownlint:"
-          markdownlint . --config .mdlrc .
+      - uses: DavidAnson/markdownlint-cli2-action@v11
+  
 
       # Check if any changes were made after prettier formatting
       - name: Check for Changes
