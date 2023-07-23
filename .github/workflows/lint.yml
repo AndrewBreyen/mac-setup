@@ -13,16 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Install prettier
-      - name: Install prettier
-        run: npm install -g prettier
+      - name: prettifier
+        uses: creyD/prettier_action@v4.3
+        with:
+          dry: True
 
-      # Lint with prettier and markdownlintm
-      - name: Run Prettier
-        run: |
-          echo "### Prettier:"
-          prettier --list-different "docs/*.md" --log-level=warn
-
+      - name: markdownling
       - uses: DavidAnson/markdownlint-cli2-action@v11
   
 
