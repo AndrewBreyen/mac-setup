@@ -1,9 +1,14 @@
 name: MKDocsBuild
 
 on:
+  push:
+    branches:
+      - '!main' # Matches branches other than 'main'
+      - '!gh-pages' # Matches branches other than 'gh-pages'
   pull_request:
     branches:
       - main
+
 
 jobs:
   build:
