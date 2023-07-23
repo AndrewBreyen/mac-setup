@@ -6,6 +6,8 @@ nav:
       - 'VMWare Fusion': 'apps/vmware-fusion.md'
     - Command Line:
       - 'Command Line': 'setup/commandline.md'
+    - zRepo Troubleshooting:
+      - 'Repo Troubleshooting': 'setup/repo-troubleshooting.md'
 theme:
   name: material
   logo: img/laptop.png
