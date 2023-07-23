@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 # Function to check if Homebrew is installed
 check_brew_installed() {
     if ! command -v brew &>/dev/null; then

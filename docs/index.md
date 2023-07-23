@@ -7,5 +7,8 @@ This wiki contains documentation on Mac Setup.
 At a command line, run:
 
 ```bash
+git clone https://github.com/AndrewBreyen/mac-setup.git
+cd mac-setup
+
 ./setup.sh
 ```
