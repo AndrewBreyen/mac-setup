@@ -17,9 +17,12 @@ jobs:
         uses: creyD/prettier_action@v4.3
         with:
           dry: True
+          prettier_options: **/*.{md}
 
       - name: markdownling
         uses: DavidAnson/markdownlint-cli2-action@v11
+        with:
+          globs: '**/*.md'
   
 
       # Check if any changes were made after prettier formatting
