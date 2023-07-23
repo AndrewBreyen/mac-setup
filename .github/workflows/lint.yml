@@ -16,8 +16,8 @@ jobs:
       - name: prettifier
         uses: creyD/prettier_action@v4.3
         with:
-          dry: True
-          prettier_options: **/*.{md}
+          dry: true
+          prettier_options: "'**/*.md'"
 
       - name: markdownling
         uses: DavidAnson/markdownlint-cli2-action@v11
