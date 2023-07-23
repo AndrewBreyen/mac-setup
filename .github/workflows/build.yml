@@ -1,4 +1,4 @@
-name: MKDocsBuild
+name: build
 
 on:
   push:
