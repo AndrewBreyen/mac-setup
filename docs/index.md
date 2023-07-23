@@ -1,3 +1,11 @@
-# Welcome to MacServer Documentation
+# Welcome to MacSetup
 
-This wiki contains documentation on how MacServer is set up and used.
+This wiki contains documentation on Mac Setup.
+
+## Quick Setup
+At a command line, run:
+
+```
+./setup.sh
+```
+
