@@ -8,7 +8,7 @@ If the script fails to install Homebrew or reports any issues related to Homebre
 
 - Ensure you have a stable internet connection and can access the Homebrew servers.
 - Check if you have the necessary permissions to install Homebrew on your system.
-- Visit the Homebrew website (https://brew.sh) and follow their manual installation instructions if the script continues to fail.
+- Visit the Homebrew website (<https://brew.sh>) and follow their manual installation instructions if the script continues to fail.
 
 ## 2. GitHub CLI (gh) Installation Issues
 
@@ -16,7 +16,7 @@ If the GitHub CLI installation fails or throws errors, consider these actions:
 
 - Verify that Homebrew is installed correctly by running `brew --version`.
 - Ensure you have the required permissions to install packages via Homebrew.
-- Check the GitHub CLI formula on Homebrew's GitHub repository (https://github.com/Homebrew/homebrew-core) for any reported issues or updates.
+- Check the GitHub CLI formula on Homebrew's GitHub repository (<https://github.com/Homebrew/homebrew-core>) for any reported issues or updates.
 
 ## 3. Pyenv Installation Issues
 
@@ -24,7 +24,7 @@ When facing problems with Pyenv installation, try the following:
 
 - Make sure Homebrew is functioning correctly and that you can install packages through it.
 - Check if any conflicting Python-related tools are installed on your system.
-- Review the official Pyenv documentation (https://github.com/pyenv/pyenv) for any troubleshooting information.
+- Review the official Pyenv documentation (<https://github.com/pyenv/pyenv>) for any troubleshooting information.
 
 ## 4. Python Dependency Installation Issues
 
