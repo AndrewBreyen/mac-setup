@@ -29,27 +29,30 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
 
-- name: Post to a Slack channel
-        id: slack
+  post-to-slack:
+    name: Post to Slack channel
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to a Slack channel
         uses: slackapi/slack-github-action@v1.23.0
         with:
-          # Slack channel ID where message will be posted. Needed if using bot token
+          # Slack channel ID where the message will be posted. Needed if using a bot token
           channel-id: "C05JB2CA4SE"
-          # Message to post into Slack. Needed if using bot token
+          # Message to post into Slack. Needed if using a bot token
           payload: |
             {
-              "text": "MacSetup build and deploy result:${{ job.status }}",
+              "text": "MacSetup build and deploy result:${{ needs.build.result }}",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "MacSetup build and deploy result:\n${{ job.status }}\n\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                    "text": "MacSetup build and deploy result:\n${{ needs.build.result }}\n\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
                   }
                 }
               ]
