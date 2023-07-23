@@ -35,16 +35,15 @@ jobs:
           publish_dir: ./site
 
       - name: Post to a Slack channel
-        if: ${{ github.ref == 'refs/heads/main' }}
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # Slack channel ID where message will be posted. Needed if using bot token
-          channel-id: "C04JZM55VC2"
+          channel-id: "C05JB2CA4SE"
           # Message to post into Slack. Needed if using bot token
           payload: |
             {
-              "text": "MacSetup build result: ${{ job.status }}",
+              "text": "MacSetup build and deploy result:${{ job.status }}",
               "blocks": [
                 {
                   "type": "section",

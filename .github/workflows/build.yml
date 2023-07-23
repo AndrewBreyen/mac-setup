@@ -33,7 +33,6 @@ jobs:
           configfile: "mkdocs.yml"
 
       - name: Post to a Slack channel
-        if: ${{ github.ref == 'refs/heads/main' }}
         id: slack
         uses: slackapi/slack-github-action@v1.23.0
         with:
@@ -42,7 +41,7 @@ jobs:
           # Message to post into Slack. Needed if using bot token
           payload: |
             {
-              "text": "MacServer Documentation build and deploy\nresult: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "MacServer Documentation Build result:\n${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "blocks": [
                 {
                   "type": "section",
