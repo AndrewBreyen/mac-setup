@@ -1,73 +1,49 @@
-name: MkDocs Build
+name: MKDocsBuild
+
 on:
   push:
     branches:
-      - main
+      - 'main'
   pull_request:
     branches:
-      - main
+      - '**'
 
 jobs:
-  buildmkdocs:
+  build:
+    name: MKDocsBuild
     runs-on: ubuntu-latest
-
+    needs: lint  # Make sure to run the 'lint' job first before running this job
     steps:
-      ###### INSTALL DEPENDENCIES
-      - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Change this to match your Node.js version if necessary
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x  # Change this to match your Python version if necessary
-
-      - name: Install MkDocs and plugins
-        run: |
-          pip install mkdocs mkdocs-material  # Add any additional plugins you use
-
-      - name: Install markdownlint-cli
-        run: npm install -g markdownlint-cli
-
-
-
-
-
-
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Build
+        uses: Tiryoh/actions-mkdocs@v0
+        with:
+          mkdocs_version: "latest"
+          requirements: "requirements.txt"
+          configfile: "mkdocs.yml"
 
+      # Download the lint-results artifact from the lint job
+      - name: Download Linting Results
+        uses: actions/download-artifact@v2
+        with:
+          name: lint-results
+          path: lint-results
 
-
-     - name: Linting
+      # Check if the linting report contains any errors
+      - name: Check Linting Results
         run: |
-          npm install -g markdownlint-cli --no-fund --no-audit
-          markdownlint . --config .mdlrc .
+          if grep -q "error" lint-results/linting-report.txt; then
+            echo "Linting failed. Please fix the errors before deploying."
+            exit 1
+          else
+            echo "Linting successful. Proceeding with the deployment."
+          fi
 
-      - name: Build MkDocs site
-        run: mkdocs build
-
-
-
-
-
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-
-
-
-
-
-     - name: Linting
-        run: |
-          npm install -g markdownlint-cli --no-fund --no-audit
-          markdownlint . --config .mdlrc .
-
-
-    
-
-      - name: Build MkDocs site
-        run: mkdocs build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site

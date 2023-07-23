@@ -1,0 +1,73 @@
+name: MkDocsBuild
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  buildmkdocs:
+    runs-on: ubuntu-latest
+
+    steps:
+      ###### INSTALL DEPENDENCIES
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Change this to match your Node.js version if necessary
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x  # Change this to match your Python version if necessary
+
+      - name: Install MkDocs and plugins
+        run: |
+          pip install mkdocs mkdocs-material  # Add any additional plugins you use
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+
+
+
+
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+
+
+
+     - name: Linting
+        run: |
+          npm install -g markdownlint-cli --no-fund --no-audit
+          markdownlint . --config .mdlrc .
+
+      - name: Build MkDocs site
+        run: mkdocs build
+
+
+
+
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+
+
+
+
+
+     - name: Linting
+        run: |
+          npm install -g markdownlint-cli --no-fund --no-audit
+          markdownlint . --config .mdlrc .
+
+
+    
+
+      - name: Build MkDocs site
+        run: mkdocs build

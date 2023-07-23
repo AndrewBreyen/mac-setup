@@ -1,4 +1,4 @@
-name: Deploy mkdocs to GitHub Pages
+name: MKDocsBuildDeploy
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Deploy docs to GitHub Pages
+    name: MKDocsBuildDeploy
     runs-on: ubuntu-latest
     needs: lint  # Make sure to run the 'lint' job first before running this job
     steps:
