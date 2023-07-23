@@ -28,8 +28,37 @@ install_gh() {
     fi
 }
 
+# Install Pyenv using Homebrew
+install_pyenv() {
+    if check_brew_installed; then
+        echo "Installing Pyenv using Homebrew..."
+        brew update
+        brew install pyenv
+        echo 'eval "$(pyenv init --path)"' >> ~/.bash_profile
+        echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+        exec $SHELL
+    else
+        echo "Homebrew is not installed. Cannot install Pyenv."
+        exit 1
+    fi
+}
+
+# Install required Python dependencies using Homebrew
+install_python_dependencies() {
+    if check_brew_installed; then
+        echo "Installing Python dependencies using Homebrew..."
+        brew install openssl readline sqlite3 xz zlib tcl-tk
+    else
+        echo "Error: Cannot install Python dependencies."
+        exit 1
+    fi
+}
+
+
 # Main script execution
 install_brew
 install_gh
+install_pyenv
+install_python_dependencies
 
 echo "Provisioning completed successfully."
