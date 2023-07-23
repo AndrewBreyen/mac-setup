@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      ###### INSTALL DEPENDENCIES
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Change this to match your Node.js version if necessary
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -21,17 +27,27 @@ jobs:
         run: |
           pip install mkdocs mkdocs-material  # Add any additional plugins you use
 
-      - name: Build MkDocs site
-        run: mkdocs build
-
-      - name: Install Node.js and npm
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Change this to match your Node.js version if necessary
-
       - name: Install markdownlint-cli
         run: npm install -g markdownlint-cli
 
+
+
+
+
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+
+
+
+     - name: Linting
+        run: |
+          npm install -g markdownlint-cli --no-fund --no-audit
+          markdownlint . --config .mdlrc .
+
+      - name: Build MkDocs site
+        run: mkdocs build
 
 
 

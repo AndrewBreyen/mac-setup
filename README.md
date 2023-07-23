@@ -1,8 +1,12 @@
+<!-- markdownlint-disable MD013 -->
+
 # MacServer-Documentation
+
 [https://andrewbreyen.github.io/MacServer-Documentation/](https://andrewbreyen.github.io/MacServer-Documentation/)
 
 ## Contributing
-This wiki is built with [MkDocs](https://www.mkdocs.org/). 
+
+This wiki is built with [MkDocs](https://www.mkdocs.org/).
 
 To contribute:
 
@@ -13,10 +17,12 @@ To contribute:
 - Make changes to markdown pages in MAIN branch
 - Once changes have been made, run `mkdocs gh-deploy` to push to gh-pages branch and update site
 
+### Host Server
 
-### Host Server:
-`mkdocs serve`    
+`mkdocs serve`
 Page will be hosted on your local machine at URL [http://localhost:8000/](http://localhost:8000/)
 
-### Push to GitHub Pages:
+### Push to GitHub Pages
+
 `mkdocs gh-deploy`
+<!-- markdownlint-enable MD013 -->

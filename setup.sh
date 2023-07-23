@@ -40,3 +40,14 @@ if [ $status -eq 0 ]; then
 else
   echo "Failed to install pyenv."
 fi
+
+
+# Command 4: Install markdownlint
+echo "Installing markdownlint"
+brew install markdownlint
+status=$?
+if [ $status -eq 0 ]; then
+  echo "markdownlint installed successfully."
+else
+  echo "Failed to install markdownlint."
+fi
