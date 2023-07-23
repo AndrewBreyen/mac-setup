@@ -1,0 +1,16 @@
+# Sample markdownlint configuration file
+
+# To ignore specific rules for certain files, you can use the "files" property.
+# The keys are the glob patterns to match the filenames, and the values are
+# the rule IDs to ignore for those files.
+
+files:
+  # Ignore the "MD013/line-length" rule for the "README.md" file.
+  "README.md":
+    MD013: false
+
+# General configuration options for all files:
+
+# Maximum line length. Adjust this value to set your preferred maximum line length.
+line-length:
+  - 80
