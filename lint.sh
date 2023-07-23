@@ -16,9 +16,6 @@ if [[ ! -z $(grep -rl --exclude="lint.sh" 'breakpoint' .) ]]; then
     exit 1
 fi
 
-echo "No breakpoints found in the codebase."
-
-
 
 echo "Linting markdown files"
 markdownlint .
