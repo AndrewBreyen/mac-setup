@@ -3,7 +3,8 @@
 ## Auto install
 
 Run in a terminal:
-```
+
+```bash
 mac-setup/setup-gpt.sh
 ```
 

@@ -1,13 +1,13 @@
 site_name: Mac Setup Documentation
 nav:
-    - Home: index.md
-    - Apps:
-      - 'Shottr': 'apps/shottr.md'
-      - 'VMWare Fusion': 'apps/vmware-fusion.md'
-    - Command Line:
-      - 'Command Line': 'setup/commandline.md'
-    - zRepo Troubleshooting:
-      - 'Repo Troubleshooting': 'setup/repo-troubleshooting.md'
+  - Home: index.md
+  - Apps:
+      - "Shottr": "apps/shottr.md"
+      - "VMWare Fusion": "apps/vmware-fusion.md"
+  - Command Line:
+      - "Command Line": "setup/commandline.md"
+  - zRepo Troubleshooting:
+      - "Repo Troubleshooting": "setup/repo-troubleshooting.md"
 theme:
   name: material
   logo: img/laptop.png
@@ -56,11 +56,11 @@ plugins:
   - glightbox
   - print-site:
       add_to_navigation: false
-      print_page_title: 'Print Site'
+      print_page_title: "Print Site"
       add_print_site_banner: false
       # Table of contents
       add_table_of_contents: true
-      toc_title: 'Table of Contents'
+      toc_title: "Table of Contents"
       toc_depth: 6
       # Content-related
       add_full_urls: false

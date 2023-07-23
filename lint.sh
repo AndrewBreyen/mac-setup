@@ -6,23 +6,18 @@ echo "##################"
 echo "### Linting"
 echo "##################"
 
-# Uncomment the following block to check for 'breakpoint'
-# if [[ ! -z $(grep -rl --exclude="lint.sh" 'breakpoint' .) ]]; then
-#     echo
-#     echo -e "Breakpoint found in the following files:"
-#     echo
-#     grep -rn --exclude="lint.sh" 'breakpoint' .
-#     echo
-#     exit 1
-# fi
+if [[ "$1" == "-f" ]]; then
+  echo "Linting and fixing markdown files"
+  echo "### Prettier:"
+  prettier --write --log-level=warn .
 
-options="${1:-}"
-
-echo "Linting markdown files"
-if output=$(markdownlint . --config .mdlrc . $options); then
-  echo "Success"
+  echo "### Markdownlint:"
+  markdownlint . --config .mdlrc . -f
 else
-  echo "Failure (Exit code: $?)"
-  echo "$output"
-  exit 1
+  echo "Linting markdown files"
+  echo "### Prettier:"
+  prettier --list-different "docs/*.md" --log-level=warn
+
+  echo "### Markdownlint:"
+  markdownlint . --config .mdlrc .
 fi

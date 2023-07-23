@@ -12,7 +12,7 @@ To contribute:
 
 - Install MkDocs: `pip install mkdocs`
 - Install mkdocs-material theme: `pip install mkdocs-material`
-- Install Git and clone the repo: `git clone https://github.com/AndrewBreyen/MacServer-Documentation.git`  
+- Install Git and clone the repo: `git clone https://github.com/AndrewBreyen/MacServer-Documentation.git`
 - `cd` into the working directory: `cd /path/to/MacServer-Documentation`
 - Make changes to markdown pages in MAIN branch
 - Once changes have been made, run `mkdocs gh-deploy` to push to gh-pages branch and update site
@@ -25,4 +25,5 @@ Page will be hosted on your local machine at URL [http://localhost:8000/](http:/
 ### Push to GitHub Pages
 
 `mkdocs gh-deploy`
+
 <!-- markdownlint-enable MD013 -->
