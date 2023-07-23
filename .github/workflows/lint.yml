@@ -19,7 +19,7 @@ jobs:
           dry: True
 
       - name: markdownling
-      - uses: DavidAnson/markdownlint-cli2-action@v11
+        uses: DavidAnson/markdownlint-cli2-action@v11
   
 
       # Check if any changes were made after prettier formatting
