@@ -7,8 +7,8 @@ This wiki contains documentation on Mac Setup.
 At a command line, run:
 
 ```bash
-git clone https://github.com/AndrewBreyen/mac-setup.git
-cd mac-setup
+git clone https://github.com/AndrewBreyen/mac-setup-scripts.git
+cd mac-setup-scripts
 
-./setup.sh
+ruby setup.rb
 ```

@@ -1,23 +1,20 @@
-<!-- markdownlint-disable MD013 -->
+# Mac Setup
+[https://andrewbreyen.github.io/mac-setup/](https://andrewbreyen.github.io/mac-setup/)
 
-# MacSetup
+## Usage
+This wiki is built with [MkDocs](https://www.mkdocs.org/). 
 
-## Contributing
+## Prerequises
+- pip
 
-This wiki is built with [MkDocs](https://www.mkdocs.org/).
+## Setup
+Install requirements: 
+`pip install -r requirements.txt`
 
-To contribute:
-
-- Install MkDocs: `pip install mkdocs`
-- Install mkdocs-material theme: `pip install mkdocs-material`
-- Install Git and clone the repo:
-- `cd` into the working directory: `cd /path/to/mac-setup`
-- Make changes to markdown pages on branches.
-- To publish, create a PR and merge to main.
-
-### Host Server
-
-`mkdocs serve`
+### Host Server:
+`mkdocs serve`    
 Page will be hosted on your local machine at URL [http://localhost:8000/](http://localhost:8000/)
 
-<!-- markdownlint-enable MD013 -->
+### Deployments:
+Github Actions automatically deploys changes made to the `main` branch. 
+`mkdocs gh-deploy`
