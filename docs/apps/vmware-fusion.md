@@ -9,5 +9,6 @@ Follow the guide (see [VMWare Communities](https://communities.vmware.com/t5/VMw
 Windows: page 41
 
 ## How To (condensed)
+
 1. Create ARM ISO
-2. 
+2.
